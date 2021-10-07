@@ -1,0 +1,10 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.doge.mixin.mixins",
+  "refmap": "mixins.doge.refmap.json",
+  "mixins": [
+    "MixinGuiMainMenu",
+    "MixinNetworkManager"
+  ]
+}
