@@ -16,6 +16,7 @@ import com.doge.client.module.modules.misc.YawLock;
 import com.doge.client.module.modules.movement.*;
 import com.doge.client.module.modules.render.Fov;
 import com.doge.client.module.modules.render.Fullbright;
+import com.doge.client.module.modules.render.Tracer;
 import net.minecraftforge.client.event.RenderWorldLastEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -54,6 +55,7 @@ public class ModuleManager {
         // Render
         modules.add(new Fullbright());
         modules.add(new Fov());
+        modules.add(new Tracer());
 
         // Client
         modules.add(new ClickGuiModule());
