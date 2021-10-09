@@ -5,7 +5,6 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 
 Requirements:
   - Intellij
-
   - Java 8
 
 Download the repository, cd into the folder.
