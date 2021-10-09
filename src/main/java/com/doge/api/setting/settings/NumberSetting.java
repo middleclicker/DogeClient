@@ -2,6 +2,7 @@ package com.doge.api.setting.settings;
 
 import com.doge.api.setting.Setting;
 import com.doge.api.setting.Type;
+import com.doge.client.Main;
 import com.doge.client.module.Module;
 
 public class NumberSetting extends Setting implements com.lukflug.panelstudio.settings.NumberSetting {
@@ -28,6 +29,9 @@ public class NumberSetting extends Setting implements com.lukflug.panelstudio.se
     @Override
     public void setNumber(double value) {
         this.value = value;
+        if(Main.SAVELOAD_CONFIG != null) {
+            Main.SAVELOAD_CONFIG.save();
+        }
     }
 
     @Override

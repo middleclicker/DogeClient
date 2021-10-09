@@ -2,6 +2,7 @@ package com.doge.api.setting.settings;
 
 import com.doge.api.setting.Setting;
 import com.doge.api.setting.Type;
+import com.doge.client.Main;
 import com.doge.client.module.Module;
 import com.lukflug.panelstudio.settings.EnumSetting;
 
@@ -27,6 +28,9 @@ public class ModeSetting extends Setting implements EnumSetting {
 
     public void setMode(String mode) {
         this.index = this.modes.indexOf(mode);
+        if(Main.SAVELOAD_CONFIG != null) {
+            Main.SAVELOAD_CONFIG.save();
+        }
     }
 
     @Override
