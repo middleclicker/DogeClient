@@ -2,6 +2,12 @@
 A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 
 # Instruction on setting up dev environment
+
+Requirements:
+  - Intellij
+
+  - Java 8
+
 Download the repository, cd into the folder.
 
 If on windows,
@@ -21,4 +27,4 @@ If on linux,
 
 If you get the problem `./gradlew: Permission denied`, then run `chmod +x gradlew`.
 
-Developer: middleclicker person#9990, d04#8022
+Developer: middleclicker person#9990, d04#8022, il coma#1427
