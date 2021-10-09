@@ -27,4 +27,9 @@ public class Step extends Module {
     public void onDisable() {
         mc.player.stepHeight = 0.5f;
     }
+
+    @Override
+    public void onEnable() {
+
+    }
 }

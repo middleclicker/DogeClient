@@ -21,6 +21,16 @@ public class Velocity extends Module {
         this.addSetting(horizontalVelocity, verticalVelocity, explosions);
     }
 
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
+
     @EventHandler
     private final Listener<PacketEvent.Receive> recieveListener = new Listener<>(event -> {
         if (mc.player == null || mc.world == null) { return; }

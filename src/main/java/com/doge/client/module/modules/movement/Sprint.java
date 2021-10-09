@@ -27,6 +27,11 @@ public class Sprint extends Module {
     }
 
     @Override
+    public void onEnable() {
+
+    }
+
+    @Override
     public void onDisable() {
         if (mode.getValueName().equals("Vanilla")) {
             KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), false);

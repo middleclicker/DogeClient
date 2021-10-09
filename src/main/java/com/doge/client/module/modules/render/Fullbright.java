@@ -18,7 +18,7 @@ public class Fullbright extends Module {
     private float lastGamma;
 
     @Override
-    public void onEnable() {
+    public void onUpdate() {
         if (mc.player == null || mc.world == null) {
             return;
         }
@@ -28,6 +28,11 @@ public class Fullbright extends Module {
         } else {
             mc.player.addPotionEffect(new PotionEffect(MobEffects.NIGHT_VISION));
         }
+    }
+
+    @Override
+    public void onEnable() {
+
     }
 
     @Override

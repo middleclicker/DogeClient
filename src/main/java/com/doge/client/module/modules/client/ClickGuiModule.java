@@ -34,4 +34,9 @@ public class ClickGuiModule extends Module {
         Main.INSTANCE.dogeGUI.enterGUI();
         this.toggle();
     }
+
+    @Override
+    public void onDisable() {
+
+    }
 }

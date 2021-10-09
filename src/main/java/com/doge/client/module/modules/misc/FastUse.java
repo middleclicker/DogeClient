@@ -37,4 +37,9 @@ public class FastUse extends Module {
     public void onDisable() {
         mc.rightClickDelayTimer = 4;
     }
+
+    @Override
+    public void onEnable() {
+
+    }
 }

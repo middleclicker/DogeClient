@@ -4,7 +4,9 @@ import com.doge.api.Global;
 import com.doge.api.setting.Setting;
 import com.doge.api.setting.settings.BooleanSetting;
 import com.doge.api.setting.settings.KeybindSetting;
+import com.doge.api.util.ClientMessage;
 import com.doge.client.Main;
+import com.doge.client.manager.ModuleManager;
 import com.doge.client.manager.SettingManager;
 import com.lukflug.panelstudio.settings.Toggleable;
 import net.minecraftforge.common.MinecraftForge;
@@ -43,6 +45,12 @@ public class Module implements Toggleable, Global, com.lukflug.panelstudio.setti
         } else {
             onDisable();
         }
+        if(Main.SAVELOAD_CONFIG != null) {
+            Main.SAVELOAD_CONFIG.save();
+        }
+        if (ModuleManager.getModuleByName("Toggle Messages").isOn()) {
+            ClientMessage.sendToggleMessage(this, toggled);
+        }
     }
 
     @Override
@@ -67,6 +75,9 @@ public class Module implements Toggleable, Global, com.lukflug.panelstudio.setti
         } else {
             Main.EVENT_BUS.unsubscribe(this);
         }
+        if(Main.SAVELOAD_CONFIG != null) {
+            Main.SAVELOAD_CONFIG.save();
+        }
     }
 
     public void onUpdate() {}
@@ -85,6 +96,9 @@ public class Module implements Toggleable, Global, com.lukflug.panelstudio.setti
     @Override
     public void setKey(int key) {
         this.key = key;
+        if(Main.SAVELOAD_CONFIG != null) {
+            Main.SAVELOAD_CONFIG.save();
+        }
     }
 
     @Override

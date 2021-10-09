@@ -14,18 +14,16 @@ public class AutoArmour extends Module {
 
     // TODO: Rewrite cuz its skidded from w+2
 
-    public NumberSetting delay = new NumberSetting("Delay", this, 250, 0, 1000, 1);
-    public BooleanSetting cursed = new BooleanSetting("Cursed", this, false);
-
     private final Timer delayTimer = new Timer();
 
     public AutoArmour() {
         super("Auto Armour", "Automatically equips armour pieces.", Category.COMBAT);
-        this.addSetting(delay, cursed);
     }
 
     @Override
     public void onUpdate() {
+        if (mc.player == null || mc.world == null) { return; }
+
         int[] bestArmorSlots = new int[4];
         int[] bestArmorValues = new int[4];
 
@@ -84,5 +82,15 @@ public class AutoArmour extends Module {
                 break;
             }
         }
+    }
+
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
     }
 }

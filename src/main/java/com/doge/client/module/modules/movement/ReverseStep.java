@@ -25,4 +25,14 @@ public class ReverseStep extends Module {
             }
         }
     }
+
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
 }

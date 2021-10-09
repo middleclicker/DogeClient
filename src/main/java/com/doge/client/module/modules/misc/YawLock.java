@@ -28,4 +28,14 @@ public class YawLock extends Module {
             mc.player.rotationPitch = (float) directionPitch.getNumber();
         }
     }
+
+    @Override
+    public void onEnable() {
+
+    }
+
+    @Override
+    public void onDisable() {
+
+    }
 }

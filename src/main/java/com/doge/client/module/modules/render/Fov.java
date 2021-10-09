@@ -27,6 +27,10 @@ public class Fov extends Module {
 
     @Override
     public void onDisable() {
-        mc.gameSettings.fovSetting = fovOld;
+        if (fovOld <= 0) {
+            mc.gameSettings.fovSetting = 90f;
+        } else {
+            mc.gameSettings.fovSetting = fovOld;
+        }
     }
 }
