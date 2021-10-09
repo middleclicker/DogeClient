@@ -1,6 +1,7 @@
 package com.doge.client;
 
 import com.doge.api.Reference;
+import com.doge.api.config.SaveLoadConfig;
 import com.doge.api.event.EventProcessor;
 import com.doge.api.util.font.CFontRenderer;
 import com.doge.client.clickgui.DogeGUI;
@@ -8,6 +9,7 @@ import com.doge.client.manager.ModuleManager;
 import com.doge.client.manager.SettingManager;
 import me.zero.alpine.EventBus;
 import me.zero.alpine.EventManager;
+import net.minecraft.client.Minecraft;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -24,8 +26,10 @@ public class Main {
     public static final Logger LOGGER = LogManager.getLogger(Reference.NAME);
     public static final EventBus EVENT_BUS = new EventManager();
 
-    public ModuleManager MODULE_MANAGER;
-    public SettingManager SETTING_MANAGER;
+    public static ModuleManager MODULE_MANAGER;
+    public static SettingManager SETTING_MANAGER;
+    public static SaveLoadConfig SAVELOAD_CONFIG;
+    public EventProcessor EVENT_PROCESSOR;
     public CFontRenderer cFontRenderer;
     public DogeGUI dogeGUI;
 
@@ -50,6 +54,9 @@ public class Main {
         LOGGER.info("Loaded Module Manager");
         SETTING_MANAGER = new SettingManager();
         LOGGER.info("Loaded Setting Manager");
+        EVENT_PROCESSOR = new EventProcessor();
+        LOGGER.info("Loaded Event Processor");
+        SAVELOAD_CONFIG = new SaveLoadConfig();
         cFontRenderer = new CFontRenderer(new Font("Verdana", Font.PLAIN, 18), true, true);
         LOGGER.info("Loaded CFontRenderer");
         dogeGUI = new DogeGUI();
