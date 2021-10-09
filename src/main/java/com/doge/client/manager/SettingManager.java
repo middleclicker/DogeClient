@@ -19,4 +19,16 @@ public class SettingManager {
         return sets;
     }
 
+    public Setting getSettingByName(Module mod, String name) {
+        for (Module m : ModuleManager.modules) {
+            for (Setting set : m.settings) {
+                if (set.name.equalsIgnoreCase(name) && set.parent == mod) {
+                    return set;
+                }
+            }
+        }
+        System.err.println("Error Setting NOT found: '" + name +"'!");
+        return null;
+    }
+
 }

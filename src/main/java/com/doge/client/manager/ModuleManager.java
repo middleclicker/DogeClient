@@ -5,8 +5,10 @@ import com.doge.client.module.Category;
 import com.doge.client.module.Module;
 import com.doge.client.module.modules.client.ClickGuiModule;
 import com.doge.client.module.modules.client.ColorMain;
+import com.doge.client.module.modules.client.DiscordRPC;
+import com.doge.client.module.modules.client.ToggleMessages;
 import com.doge.client.module.modules.combat.AutoArmour;
-import com.doge.client.module.modules.exploit.NoSwing;
+import com.doge.client.module.modules.misc.AutoDisconnect;
 import com.doge.client.module.modules.misc.FakePlayer;
 import com.doge.client.module.modules.misc.FastUse;
 import com.doge.client.module.modules.exploit.XCarry;
@@ -35,7 +37,6 @@ public class ModuleManager {
 
         // Exploit
         modules.add(new XCarry());
-        modules.add(new NoSwing());
 
         // Movement
         modules.add(new Step());
@@ -48,6 +49,7 @@ public class ModuleManager {
         modules.add(new FastUse());
         modules.add(new YawLock());
         modules.add(new FakePlayer());
+        modules.add(new AutoDisconnect());
 
         // Render
         modules.add(new Fullbright());
@@ -56,6 +58,8 @@ public class ModuleManager {
         // Client
         modules.add(new ClickGuiModule());
         modules.add(new ColorMain());
+        modules.add(new DiscordRPC());
+        modules.add(new ToggleMessages());
 
     }
 
