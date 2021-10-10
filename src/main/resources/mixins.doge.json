@@ -5,6 +5,9 @@
   "refmap": "mixins.doge.refmap.json",
   "mixins": [
     "MixinGuiMainMenu",
-    "MixinNetworkManager"
+    "MixinNetworkManager",
+    "MixinEntityPlayerSP",
+    "MixinPlayerControllerMP",
+    "MixinMinecraft"
   ]
 }
