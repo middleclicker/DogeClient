@@ -3,11 +3,9 @@ package com.doge.client.manager;
 import com.doge.client.Main;
 import com.doge.client.module.Category;
 import com.doge.client.module.Module;
-import com.doge.client.module.modules.client.ClickGuiModule;
-import com.doge.client.module.modules.client.ColorMain;
-import com.doge.client.module.modules.client.DiscordRPC;
-import com.doge.client.module.modules.client.ToggleMessages;
+import com.doge.client.module.modules.client.*;
 import com.doge.client.module.modules.combat.AutoArmour;
+import com.doge.client.module.modules.hud.Ping;
 import com.doge.client.module.modules.misc.AutoDisconnect;
 import com.doge.client.module.modules.misc.FakePlayer;
 import com.doge.client.module.modules.misc.FastUse;
@@ -62,7 +60,10 @@ public class ModuleManager {
         modules.add(new ColorMain());
         modules.add(new DiscordRPC());
         modules.add(new ToggleMessages());
+        modules.add(new HUDEditor());
 
+        // Hud
+        modules.add(new Ping());
     }
 
     public static ArrayList<Module> getModulesByCategory(Category c) {
