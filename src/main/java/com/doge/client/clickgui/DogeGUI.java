@@ -117,11 +117,12 @@ public class DogeGUI extends MinecraftHUDGUI {
         Toggleable hudToggle = new Toggleable() {
             @Override
             public void toggle() {
+                render();
             }
 
             @Override
             public boolean isOn() {
-                return gui.isOn() && clickGuiModule.showHUD.isOn() || hudEditor;
+                return hudEditor;
             }
         };
         for (Module m : ModuleManager.getModules()) {
