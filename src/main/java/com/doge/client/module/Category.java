@@ -6,5 +6,6 @@ public enum Category {
     MOVEMENT,
     MISC,
     RENDER,
-    CLIENT
+    CLIENT,
+    HUD
 }

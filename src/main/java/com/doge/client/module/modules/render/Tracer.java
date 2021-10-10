@@ -30,7 +30,7 @@ import static org.lwjgl.opengl.GL11.glHint;
 
 public class Tracer extends Module {
 
-    // TODO: Rewrite.
+    // TODO: Rewrite and fix some hostile mobs not registering
 
     public BooleanSetting hostileMobs = new BooleanSetting("Hostile Mobs", this, true); // Still broken
     public BooleanSetting passiveMobs = new BooleanSetting("Passive Mobs", this, true);
@@ -57,7 +57,7 @@ public class Tracer extends Module {
                 .filter(e -> e != mc.player)
                 .forEach(e -> {
                     if (e instanceof IAnimals && !passiveMobs.isOn()) { return; }
-                    else if (e instanceof IMob && !hostileMobs.isOn()) { return; } // I dont know...
+                    else if (e instanceof IMob && !hostileMobs.isOn()) { return; } // Doesn't work
                     else if (e instanceof EntityPlayer && !players.isOn()) { return; }
                     else if (e instanceof EntityItem && !entities.isOn()) { return; }
                     if (mc.player.getDistance(e) > renderDistance.getNumber()) {

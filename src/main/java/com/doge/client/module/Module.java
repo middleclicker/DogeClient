@@ -80,6 +80,10 @@ public class Module implements Toggleable, Global, com.lukflug.panelstudio.setti
         }
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public void onUpdate() {}
     public void onRender() {}
 
