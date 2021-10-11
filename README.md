@@ -16,7 +16,7 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * Add more modes to Fly
     * Rewrite and fix hostile mobs not registering for Tracers
     * Add View Model
-    * Make Reach module
+    * ~~Make Reach module~~ Added
   - General
     * Add friend function
 
