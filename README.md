@@ -7,6 +7,19 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
   - ~~HUD modules don't work~~ Fixed
   - Tracers don't target properly
 
+# Todos
+  - Click Gui:
+    * Add more themes, hopefully a custom one
+    * Add Gui config loader & saver
+  - Modules
+    * Rewrite Auto Armour
+    * Add more modes to Fly
+    * Rewrite and fix hostile mobs not registering for Tracers
+    * Add View Model
+    * Make Reach module
+  - General
+    * Add friend function
+
 # Instruction on setting up dev environment
 
 Requirements:
