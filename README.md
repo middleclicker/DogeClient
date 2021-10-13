@@ -5,7 +5,7 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 
 # Bugs
   - ~~HUD modules don't work~~ Fixed
-  - Tracers don't target properly
+  - ~~Tracers don't target properly~~ Fixed
 
 # Todos
   - Click Gui:
@@ -13,7 +13,7 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * Add Gui config loader & saver
   - Modules
     * Rewrite Auto Armour
-    * Rewrite and fix hostile mobs not registering for Tracers
+    * Rewrite Tracers
     * Rewrite Save Load Config
     * Add more modes to Fly
     * Add View Model
