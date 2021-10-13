@@ -20,12 +20,13 @@ public class FakePlayer extends Module {
         fake_player.copyLocationAndAnglesFrom(mc.player);
         fake_player.rotationYawHead = mc.player.rotationYawHead;
         mc.world.addEntityToWorld(-100, fake_player);
+        fake_player.onLivingUpdate();
     }
 
     @Override
     public void onDisable() {
         try {
-            mc.world.removeEntity(fake_player);
+            mc.world.removeEntityFromWorld(-100);
         } catch (Exception ignored) {}
     }
 }
