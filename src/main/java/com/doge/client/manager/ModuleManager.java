@@ -5,12 +5,9 @@ import com.doge.client.module.Category;
 import com.doge.client.module.Module;
 import com.doge.client.module.modules.client.*;
 import com.doge.client.module.modules.combat.AutoArmour;
-import com.doge.client.module.modules.hud.Ping;
-import com.doge.client.module.modules.misc.AutoDisconnect;
-import com.doge.client.module.modules.misc.FakePlayer;
-import com.doge.client.module.modules.misc.FastUse;
+import com.doge.client.module.modules.exploit.Reach;
+import com.doge.client.module.modules.misc.*;
 import com.doge.client.module.modules.exploit.XCarry;
-import com.doge.client.module.modules.misc.YawLock;
 import com.doge.client.module.modules.movement.*;
 import com.doge.client.module.modules.render.Fov;
 import com.doge.client.module.modules.render.Fullbright;
@@ -36,6 +33,7 @@ public class ModuleManager {
 
         // Exploit
         modules.add(new XCarry());
+        modules.add(new Reach());
 
         // Movement
         modules.add(new Step());
@@ -49,6 +47,7 @@ public class ModuleManager {
         modules.add(new YawLock());
         modules.add(new FakePlayer());
         modules.add(new AutoDisconnect());
+        modules.add(new MiddleClickFriend());
 
         // Render
         modules.add(new Fullbright());
@@ -63,7 +62,6 @@ public class ModuleManager {
         modules.add(new HUDEditor());
 
         // Hud
-        modules.add(new Ping());
     }
 
     public static ArrayList<Module> getModulesByCategory(Category c) {
