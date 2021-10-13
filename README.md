@@ -3,10 +3,6 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 
 ![DogeLogo](https://user-images.githubusercontent.com/60602265/136652986-0e5acb40-581a-49b5-8281-9e1a2d3084ec.jpg)
 
-# Bugs
-  - ~~HUD modules don't work~~ Fixed
-  - ~~Tracers don't target properly~~ Fixed
-
 # Todos
   - Click Gui:
     * Add more themes, hopefully a custom one
@@ -21,11 +17,9 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
   - General
     * ~~Add friend function~~ Added
   - Config
-    * Save & load the following:
-      1. Colors
     * Just rewrite...
 
-# Instruction on setting up dev environment
+# Instruction on setting up dev environment for Intellij
 
 Requirements:
   - Intellij
@@ -49,5 +43,16 @@ If on linux,
 
 
 If you get the problem `./gradlew: Permission denied`, then run `chmod +x gradlew`.
+
+Wait for the command to complete, then open build.gradle in Intellij. Remember to open as project.
+
+Wait for Intellij to finish building. Then go to the top right corner and click "Add run configurations". On the top left corner click the "+" sign.
+Select "Application" from the dropdown.
+
+For older versions of intellij:
+![image](https://user-images.githubusercontent.com/60602265/137077941-f09492dc-6d11-4b88-8912-2d6a26531f43.png)
+
+For newer versions of Intellij:
+~~I'm too lazy to install it use your braincells~~
 
 Developer: middleclicker person#9990, d04#8022, il coma#1427
