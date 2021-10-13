@@ -50,6 +50,7 @@ Wait for Intellij to finish building. Then go to the top right corner and click 
 Select "Application" from the dropdown.
 
 For older versions of intellij:
+
 ![image](https://user-images.githubusercontent.com/60602265/137077941-f09492dc-6d11-4b88-8912-2d6a26531f43.png)
 
 For newer versions of Intellij:
