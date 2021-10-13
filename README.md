@@ -20,7 +20,10 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * ~~Make Reach module~~ Added
   - General
     * ~~Add friend function~~ Added
-      - Add Config
+  - Config
+    * Save & load the following:
+      1. Colors
+    * Just rewrite...
 
 # Instruction on setting up dev environment
 
