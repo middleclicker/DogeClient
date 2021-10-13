@@ -56,4 +56,8 @@ For older versions of intellij:
 For newer versions of Intellij:
 ~~I'm too lazy to install it use your braincells~~
 
-Developer: middleclicker person#9990, d04#8022, il coma#1427
+Developers: middleclicker person#9990, d04#8022, il coma#1427
+
+Credits:
+  - Gamesense for click gui & tracers(rewrite soon)
+  - Postman for config system
