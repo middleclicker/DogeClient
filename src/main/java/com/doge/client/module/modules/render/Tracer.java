@@ -5,6 +5,7 @@ import com.doge.api.setting.settings.ColorSetting;
 import com.doge.api.setting.settings.ModeSetting;
 import com.doge.api.setting.settings.NumberSetting;
 import com.doge.api.util.color.DColor;
+import com.doge.client.friend.FriendManager;
 import com.doge.client.manager.ModuleManager;
 import com.doge.client.module.Category;
 import com.doge.client.module.Module;
@@ -15,10 +16,14 @@ import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.monster.IMob;
+import net.minecraft.entity.passive.EntityAmbientCreature;
+import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.math.Vec3d;
@@ -30,24 +35,21 @@ import static org.lwjgl.opengl.GL11.glHint;
 
 public class Tracer extends Module {
 
-    // TODO: Rewrite and fix some hostile mobs not registering
-
-    public BooleanSetting hostileMobs = new BooleanSetting("Hostile Mobs", this, true); // Still broken
-    public BooleanSetting passiveMobs = new BooleanSetting("Passive Mobs", this, true);
-    public BooleanSetting entities = new BooleanSetting("Entities", this, true);
-    public BooleanSetting players = new BooleanSetting("Players", this, true);
     public NumberSetting renderDistance = new NumberSetting("Distance", this, 100, 10, 260, 1);
-    public ModeSetting pointsTo = new ModeSetting("Draw To", this, "Feet", "Feet", "Head");
-    public BooleanSetting colorType = new BooleanSetting("Color Sync", this, true);
-    public ColorSetting nearColor = new ColorSetting("Near Color", this, new DColor(255, 0, 0, 255));
-    public ColorSetting midColor = new ColorSetting("Middle Color", this, new DColor(255, 255, 0, 255));
-    public ColorSetting farColor = new ColorSetting("Far Color", this, new DColor(0, 255, 0, 255));
+    public BooleanSetting hostileMobs = new BooleanSetting("Hostile Mobs", this, true);
+    public BooleanSetting passiveMobs = new BooleanSetting("Passive Mobs", this, true);
+    public BooleanSetting players = new BooleanSetting("Players", this, true);
+    public BooleanSetting useDistanceColor = new BooleanSetting("Color via Distance", this, false);
+    public ColorSetting friendColor = new ColorSetting("Friend Color", this, new DColor(5, 217, 255));
+    public ColorSetting playerColor = new ColorSetting("Player Color", this, new DColor(255, 200, 53));
+    public ColorSetting hostileColor = new ColorSetting("Hostile Color", this, new DColor(255, 0, 0));
+    public ColorSetting passiveColor = new ColorSetting("Passive Color", this, new DColor(95, 255, 95));
 
     public DColor tracerColor;
 
     public Tracer() {
         super("Tracer", "Draws a line to entities", Category.RENDER);
-        this.addSetting(hostileMobs, passiveMobs, entities, players, pointsTo, colorType, nearColor, midColor, farColor);
+        this.addSetting(hostileMobs, passiveMobs, players, useDistanceColor, friendColor, playerColor, hostileColor, passiveColor, renderDistance);
     }
 
     @Override
@@ -55,30 +57,45 @@ public class Tracer extends Module {
         if (mc.player == null || mc.world == null) { return; }
         mc.world.loadedEntityList.stream()
                 .filter(e -> e != mc.player)
+                .filter(e -> e instanceof EntityLivingBase)
                 .forEach(e -> {
-                    if (e instanceof IAnimals && !passiveMobs.isOn()) { return; }
-                    else if (e instanceof IMob && !hostileMobs.isOn()) { return; } // Doesn't work
-                    else if (e instanceof EntityPlayer && !players.isOn()) { return; }
-                    else if (e instanceof EntityItem && !entities.isOn()) { return; }
                     if (mc.player.getDistance(e) > renderDistance.getNumber()) {
                         return;
                     } else {
-                        // TODO: Add friend function
-                        if (mc.player.getDistance(e) < 20) {
-                            tracerColor = nearColor.getColor();
-                        }
-                        if (mc.player.getDistance(e) >= 20 && mc.player.getDistance(e) < 50) {
-                            tracerColor = midColor.getColor();
-                        }
-                        if (mc.player.getDistance(e) >= 50) {
-                            tracerColor = farColor.getColor();
-                        }
-
-                        if (colorType.isOn()) {
+                        if (useDistanceColor.isOn()) {
                             tracerColor = getDistanceColor((int) mc.player.getDistance(e));
                         }
+                        // TODO: Add friend function
+                        if (e instanceof EntityPlayer && players.isOn()) {
+                            if (FriendManager.isFriend(e.getName())) {
+                                if (useDistanceColor.isOn()) {
+                                    drawLineToEntityPlayer(e, tracerColor);
+                                } else {
+                                    drawLineToEntityPlayer(e, friendColor.getColor());
+                                }
+                            } else {
+                                if (useDistanceColor.isOn()) {
+                                    drawLineToEntityPlayer(e, tracerColor);
+                                } else {
+                                    drawLineToEntityPlayer(e, playerColor.getColor());
+                                }
+                            }
+                        }
+                        if (e instanceof EntityAnimal && passiveMobs.isOn()) {
+                            if (useDistanceColor.isOn()) {
+                                drawLineToEntityPlayer(e, tracerColor);
+                            } else {
+                                drawLineToEntityPlayer(e, passiveColor.getColor());
+                            }
+                        }
+                        if (e instanceof EntityMob && hostileMobs.isOn()) {
+                            if (useDistanceColor.isOn()) {
+                                drawLineToEntityPlayer(e, tracerColor);
+                            } else {
+                                drawLineToEntityPlayer(e, hostileColor.getColor());
+                            }
+                        }
                     }
-                    drawLineToEntityPlayer(e, tracerColor);
                 });
     }
 
@@ -101,11 +118,7 @@ public class Tracer extends Module {
     public void drawLine1(double posx, double posy, double posz, double up, DColor color) {
         Vec3d eyes = ActiveRenderInfo.getCameraPosition().add(mc.getRenderManager().viewerPosX, mc.getRenderManager().viewerPosY, mc.getRenderManager().viewerPosZ);
         prepare();
-        if (pointsTo.getValueName().equalsIgnoreCase("Head")) {
-            drawLine(eyes.x, eyes.y, eyes.z, posx, posy + up, posz, color);
-        } else {
-            drawLine(eyes.x, eyes.y, eyes.z, posx, posy, posz, color);
-        }
+        drawLine(eyes.x, eyes.y, eyes.z, posx, posy + up, posz, color);
         release();
     }
 
