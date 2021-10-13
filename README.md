@@ -19,7 +19,8 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * Add View Model
     * ~~Make Reach module~~ Added
   - General
-    * Add friend function
+    * ~~Add friend function~~ Added
+      - Add Config
 
 # Instruction on setting up dev environment
 
