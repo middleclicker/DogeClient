@@ -6,18 +6,16 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 # Todos
   - Click Gui:
     * Add more themes, hopefully a custom one
-    * Add Gui config loader & saver
   - Modules
-    * Rewrite Auto Armour
-    * Rewrite Tracers
-    * Rewrite Save Load Config
-    * Add more modes to Fly
-    * Add View Model
-    * ~~Make Reach module~~ Added
+    * Rewrite (Auto Armour).
+    * Rewrite (Tracers).
+    * Add more modes (Fly).
+    * Fix bug where the sky will flash when Time option is on (No Render).
+    * Finish writing module (View Model).
   - General
-    * ~~Add friend function~~ Added
+    * 
   - Config
-    * Just rewrite...
+    * Rewrite (Save Load Config).
 
 # Instruction on setting up dev environment for Intellij
 
@@ -59,5 +57,5 @@ For newer versions of Intellij:
 Developers: middleclicker person#9990, d04#8022, il coma#1427
 
 Credits:
-  - Gamesense for click gui & tracers(rewrite soon)
-  - Postman for config system
+  - Gamesense for click gui & tracers (Rewrite soon)
+  - Postman for config system (Rewrite soon)
