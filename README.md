@@ -16,6 +16,10 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
   - Config
     * Rewrite (Save Load Config).
 
+# List of Pain...
+  - Add baritone
+  - Make autocrystal
+
 # Instruction on setting up dev environment for Intellij
 
 Requirements:
