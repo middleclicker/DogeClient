@@ -1,8 +1,11 @@
 package com.doge.mixin.mixins;
 
+import com.doge.api.event.events.RenderItemEvent;
+import com.doge.client.Main;
 import com.doge.client.manager.ModuleManager;
 import com.doge.client.module.modules.render.NoRender;
 import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.util.EnumHandSide;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -20,5 +23,11 @@ public class MixinItemRenderer {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    @Inject(method = "transformFirstPerson", at = @At("HEAD"))
+    public void transformFirstPerson(EnumHandSide hand, float p_187453_2_, CallbackInfo callbackInfo) {
+        RenderItemEvent event = new RenderItemEvent(hand);
+        Main.EVENT_BUS.post(event);
     }
 }
