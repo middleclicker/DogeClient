@@ -7,6 +7,7 @@ import com.doge.client.module.modules.client.*;
 import com.doge.client.module.modules.combat.AutoArmour;
 import com.doge.client.module.modules.combat.AutoClicker;
 import com.doge.client.module.modules.exploit.Reach;
+import com.doge.client.module.modules.hud.HUDEditor;
 import com.doge.client.module.modules.misc.*;
 import com.doge.client.module.modules.exploit.XCarry;
 import com.doge.client.module.modules.movement.*;
