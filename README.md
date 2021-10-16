@@ -11,7 +11,6 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * Rewrite (Tracers).
     * Add more modes (Fly).
     * Fix bug where the sky will flash when Time option is on (No Render).
-    * Finish writing module (View Model).
   - General
     * None
   - Config
