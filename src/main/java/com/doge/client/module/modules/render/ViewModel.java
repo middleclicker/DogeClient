@@ -1,8 +1,17 @@
 package com.doge.client.module.modules.render;
 
+import com.doge.api.event.events.RenderItemEvent;
 import com.doge.api.setting.settings.NumberSetting;
 import com.doge.client.module.Category;
 import com.doge.client.module.Module;
+import me.zero.alpine.listener.EventHandler;
+import me.zero.alpine.listener.Listener;
+import net.minecraft.client.renderer.GlStateManager;
+import net.minecraft.util.EnumHandSide;
+
+/**
+ * Inspiration from Gamesense and credits to W+3 for settings.
+ */
 
 public class ViewModel extends Module {
 
@@ -32,8 +41,17 @@ public class ViewModel extends Module {
         this.addSetting(mainX, mainY, mainZ, offX, offY, offZ, mainAngel, mainRx, mainRy, mainRz, offAngle, offRx, offRy, offRz, mainScaleX, mainScaleY, mainScaleZ, offScaleX, offScaleY, offScaleZ);
     }
 
-    @Override
-    public void onUpdate() {
-        // TODO: Finish View Model
-    }
+    @SuppressWarnings("unused")
+    @EventHandler
+    private final Listener<RenderItemEvent> eventListener = new Listener<>(event -> {
+        if (event.getEnumHandSide() == EnumHandSide.RIGHT) {
+            GlStateManager.translate(mainX.getNumber(), mainY.getNumber(), mainZ.getNumber());
+            GlStateManager.scale(mainScaleX.getNumber(), mainScaleY.getNumber(), mainScaleZ.getNumber());
+            GlStateManager.rotate((float) mainAngel.getNumber(), (float) mainRx.getNumber(), (float) mainRy.getNumber(), (float) mainRz.getNumber());
+        } else if (event.getEnumHandSide() == EnumHandSide.LEFT) {
+            GlStateManager.translate(offX.getNumber(), offY.getNumber(), offZ.getNumber());
+            GlStateManager.scale(offScaleX.getNumber(), offScaleY.getNumber(), offScaleZ.getNumber());
+            GlStateManager.rotate((float) offAngle.getNumber(), (float) offRx.getNumber(), (float) offRy.getNumber(), (float) offRz.getNumber());
+        }
+    });
 }
