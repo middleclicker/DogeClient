@@ -1,0 +1,21 @@
+{
+  "required": true,
+  "compatibilityLevel": "JAVA_8",
+  "package": "com.doge.mixin.mixins",
+  "refmap": "mixins.doge.refmap.json",
+  "mixins": [
+    "MixinBlockSlimeBlock",
+    "MixinBlockSoulSand",
+    "MixinBlockWeb",
+    "MixinEntityPlayerSP",
+    "MixinEntityRenderer",
+    "MixinGuiMainMenu",
+    "MixinItemRenderer",
+    "MixinLayerArmorBase",
+    "MixinMinecraft",
+    "MixinMovementInputFromOptions",
+    "MixinNetworkManager",
+    "MixinPlayerControllerMP",
+    "MixinRenderPlayer"
+  ]
+}
