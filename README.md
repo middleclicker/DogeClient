@@ -2,6 +2,7 @@
 A Minecraft utility client for 1.12.2, used by shiba inus across the world!
 
 <img src="https://img.shields.io/github/downloads/middleclicker/DogeClient/total" alt="dwnlds" />
+<img src="https://img.shields.io/github/issues/middleclicker/DogeClient" alt="dwnlds" />
 
 ![DogeLogo](https://user-images.githubusercontent.com/60602265/136652986-0e5acb40-581a-49b5-8281-9e1a2d3084ec.jpg)
 
