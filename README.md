@@ -13,10 +13,9 @@ A Minecraft utility client for 1.12.2, used by shiba inus across the world!
     * Rewrite (Tracers).
     * Add more modes (Fly).
     * Fix bug where the sky will flash when Time option is on (No Render).
+    * Write my own auto crystal (learning)
   - General
-    * None
-  - Config
-    * Rewrite (Save Load Config).
+    * Fix a ton of stuff
 
 # List of Pain...
   - Add baritone
