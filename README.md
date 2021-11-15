@@ -63,4 +63,5 @@ Developers: middleclicker person#9990, d04#8022, il coma#1427
 
 Credits:
   - Gamesense for click gui & tracers (Rewrite soon)
-  - Postman for config system (Rewrite soon)
+  - ~~Postman for config system (Rewrite soon)~~ Rewritten
+  - Postman for Auto Crystal (lol i know postman autocrystal...)
