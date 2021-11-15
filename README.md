@@ -58,9 +58,9 @@ For older versions of intellij:
 For newer versions of Intellij:
 ~~I'm too lazy to install it use your braincells~~
 
-Developers: middleclicker person#9990
+**Developers**: middleclicker person#9990
 
-Credits:
+**Credits**
   - Gamesense for click gui & tracers (Rewrite soon)
   - ~~Postman for config system (Rewrite soon)~~ Rewritten
   - Postman for Auto Crystal (lol i know postman autocrystal...)
