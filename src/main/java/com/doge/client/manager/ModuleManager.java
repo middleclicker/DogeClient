@@ -31,6 +31,7 @@ public class ModuleManager {
         modules.add(new AutoArmour());
         modules.add(new AutoClicker());
         modules.add(new PostmanAutoCrystal());
+        modules.add(new OyveyAutoCrystal());
         modules.add(new Offhand());
         modules.add(new Surround());
 

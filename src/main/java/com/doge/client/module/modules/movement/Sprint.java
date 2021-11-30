@@ -7,7 +7,7 @@ import net.minecraft.client.settings.KeyBinding;
 
 public class Sprint extends Module {
 
-    public ModeSetting mode = new ModeSetting("Mode", this, "Vanilla", "Vanilla", "Keep");
+    public ModeSetting mode = new ModeSetting("Mode", this, "Vanilla", "Vanilla", "Keep", "Multi Directional");
 
     public Sprint() {
         super("Sprint", "Makes your sprint.", Category.MOVEMENT);

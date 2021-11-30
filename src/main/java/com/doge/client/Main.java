@@ -23,7 +23,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.lwjgl.opengl.Display;
 
+import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 @Mod(modid=Reference.MODID, name=Reference.NAME, version=Reference.VERSION)
 public class Main {
@@ -82,6 +84,7 @@ public class Main {
     @Mod.EventHandler
     public void postInit(FMLPostInitializationEvent event) {
         Display.setTitle(Reference.NAME + " v" + Reference.VERSION);
+        LOGGER.info("Set title for " + Reference.NAME);
         LOGGER.info("Finished initialization for " + Reference.NAME + " v" + Reference.VERSION);
     }
 

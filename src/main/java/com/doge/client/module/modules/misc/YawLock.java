@@ -20,6 +20,8 @@ public class YawLock extends Module {
 
     @Override
     public void onUpdate() {
+        if (mc.player == null || mc.world == null) return;
+
         if (lockYaw.isOn()) {
             mc.player.rotationYaw = (float) directionYaw.getNumber();
             mc.player.rotationYawHead = (float) directionYaw.getNumber();

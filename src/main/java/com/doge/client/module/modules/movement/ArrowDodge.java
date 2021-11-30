@@ -1,17 +1,10 @@
 package com.doge.client.module.modules.movement;
 
 import com.doge.api.setting.settings.ModeSetting;
-import com.doge.api.setting.settings.NumberSetting;
-import com.doge.api.util.EntityUtil;
-import com.doge.api.util.Timer;
-import com.doge.api.util.color.DColor;
-import com.doge.api.util.render.RenderUtil;
 import com.doge.client.module.Category;
 import com.doge.client.module.Module;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.monster.EntitySkeleton;
@@ -31,7 +24,7 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ArrowDodge extends Module {
 
-    public ModeSetting mode = new ModeSetting("Mode", this, "Legit", "Legit", "Packet");
+    public ModeSetting mode = new ModeSetting("Mode", this, "Legit", "Legit"); // TODO: Add packet mode
 
     public ArrowDodge() {
         super("Arrow Dodge", "Automatically dodges arrows.", Category.MOVEMENT);
@@ -134,28 +127,23 @@ public class ArrowDodge extends Module {
                     KeyBinding.setKeyBindState(mc.gameSettings.keyBindRight.getKeyCode(), false);
                     this.hit = false;
                 }
-            } else if (mode.is("Packet")) {
+            } else if (mode.is("Packet")) { // Unfinished, do not use
                 if (temp == 1) {
-                    mc.player.connection.sendPacket(new CPacketPlayer.Position(Math.floor(mc.player.posX)+1, mc.player.posY, Math.floor(mc.player.posZ), true));
-                    mc.player.setPosition(Math.floor(mc.player.posX)+1, mc.player.posY, Math.floor(mc.player.posZ));
+                    float leftAngle = mc.player.cameraYaw - 90; //or 90 if somehow in degrees
+                    mc.player.connection.sendPacket(new CPacketPlayer.Position(mc.player.posX + Math.cos(leftAngle), mc.player.posY, mc.player.posZ + Math.sin(leftAngle), true));
+                    mc.player.setPosition(mc.player.posX + Math.cos(leftAngle), mc.player.posY, mc.player.posZ + Math.sin(leftAngle));
                 }
                 if (temp == 2) {
+                    /*
                     mc.player.connection.sendPacket(new CPacketPlayer.Position(Math.floor(mc.player.posX)-1, mc.player.posY, Math.floor(mc.player.posZ), true));
                     mc.player.setPosition(Math.floor(mc.player.posX)-1, mc.player.posY, Math.floor(mc.player.posZ));
+
+                     */
                 }
             }
-
-            // move(mc.player.motionX, mc.player.motionY, mc.player.motionZ);
         }
+
         // System.out.println(target);
-    }
-
-    private void move(Vec3d vel) {
-        move(vel.x, vel.y, vel.z);
-    }
-
-    private void move(double velX, double velY, double velZ) {
-        mc.player.setVelocity(velX, velY, velZ);
     }
 
     private ThrowableType getTypeFromCurrentItem(EntityPlayer player) {
